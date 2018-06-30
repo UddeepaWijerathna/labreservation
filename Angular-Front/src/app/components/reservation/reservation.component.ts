@@ -14,6 +14,8 @@ import {Router} from '@angular/router';
 export class ReservationComponent implements OnInit {
   reserveddate:String;
   reservelist = [];
+  
+  
 
   constructor (
     private ngFlashMessageService: NgFlashMessageService,
@@ -39,6 +41,6 @@ export class ReservationComponent implements OnInit {
   
   }
 
- 
+
  
 }

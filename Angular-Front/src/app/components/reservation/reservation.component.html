@@ -3,14 +3,24 @@
 
      <!-- </div><br><div> -->
         <div class="card-body">
-            <form id= "filter">
+            <form class="form-horizontal" id= "filter">
                     <div class="form-group" >
                             <div class="col-lg-3">
                               <label type="text" >Filter By Date</label>
-                              <input type="date" class="form-control"  placeholder="Date" name="reserveddat" [(ngModel)]="reserveddate">
-                                
-                            
-                            </div>
+                              <input type="date" class="form-control"  placeholder="Date" name="reserveddat" [(ngModel)]="reserveddat">  
+                                  </div>
+                    </div>
+               
+            </form>
+
+            <form class="form-horizontal" id= "filter2">
+                    <div class="form-group" >
+                            <div class="col-lg-3">
+                                    <label type="text" >Filter By Start Time</label>
+                                    <input type="time" class="form-control"  placeholder="Time" name="time" [(ngModel)]="time">
+                                      
+                                  
+                                  </div>
                     </div>
                
             </form>
@@ -27,7 +37,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let x of (reservelist | filter:reserveddat )">
+        <tr *ngFor="let x of (reservelist | filter:reserveddat| filter2:time )">
             <td>{{x.username}}</td>
             <td>{{x.labname}}</td>
             <td>{{x.reserveddate}}</td>

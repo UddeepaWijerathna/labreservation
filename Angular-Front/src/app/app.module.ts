@@ -24,6 +24,8 @@ import { UpdatereservationComponent } from './components/updatereservation/updat
 import { AddlabComponent } from './components/addlab/addlab.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FilterPipe } from './filter.pipe';
+import { Filter2Pipe } from './filter2.pipe';
+
 const appRoutes:Routes = [ 
   {path:'',component:HomeComponent},
   {path:'register',component:RegisterComponent},
@@ -54,6 +56,8 @@ const appRoutes:Routes = [
     AddlabComponent,
     FilterComponent,
     FilterPipe,
+    Filter2Pipe
+   
     
   ],
   imports: [

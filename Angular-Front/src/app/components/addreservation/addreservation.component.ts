@@ -20,6 +20,9 @@ export class AddreservationComponent implements OnInit {
   from:String;
   to:String;
   lablist = [];
+  reservelist =[];
+  can:boolean;
+  // result=String;
 
   constructor(
     private ngFlashMessageService: NgFlashMessageService,
@@ -31,28 +34,8 @@ export class AddreservationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.labService.getAllLabs().subscribe(dashboard => {
-    //   this.lablist = dashboard.lablist;
-      
-    // },
-    // err => {
-    //   console.log(err);
-    //   return false;
-    // });
-    // this.labname='';
-    // this.reserveddate='';
-    // this.from='';
-    // this.to='';
-    
+
   }
-
-//   processdates = function convert(str) {
-//     var date = new Date(str),
-//         mnth = ("0" + (date.getMonth()+1)).slice(-2),
-//         day  = ("0" + date.getDate()).slice(-2);
-//     return [ date.getFullYear(), mnth, day ].join("-");
-// }
-
   onReserveLab() {
     console.log("lll");
     const user = this.authService.loadUser();
@@ -67,6 +50,7 @@ export class AddreservationComponent implements OnInit {
       reserveddate:this. reserveddate,
       from:this.from,
       to:this.to
+      
     }
     console.log(reservation);
     
@@ -74,36 +58,66 @@ export class AddreservationComponent implements OnInit {
       //console.log(lab.labname);
       //console.log(lab.description);
       this.ngFlashMessageService.showFlashMessage({
-        messages: ["Please fill Requied Fields"], 
+        messages: ["Please fill Required Fields"], 
          dismissible: true, 
          timeout: 5000,
          type: 'danger'
        });
        return false;
     }
-    
-    this.reservationService.insertReservation(reservation).subscribe(data => {
-      if(data.success) {
-        this.ngFlashMessageService.showFlashMessage({
-          messages: ["Reserved successfully"], 
-          dismissible: true, 
-          timeout: 5000,
-          type: 'success'
-       }); 
+
+    this.reservationService.getAllReservations().subscribe(addreservation=> {
+      this.reservelist = addreservation.reservelist;
+      console.log(this.reservelist);
+      
+      console.log(this.labname);
+      if(this.reservelist.length !=0){
+      
+         for(var element in this.reservelist){
+          
+            if((this.labname==this.reservelist[element].labname)&&(this.reserveddate==this.reservelist[element].reserveddate) ){
+              if((this.from==this.reservelist[element].from) && (this.to==this.reservelist[element].to))    
+                    this.can= false;
+            }
+            else{
+              this.can= true;
+            }
+                
+          }
+      }
+  //  console.log(this.can);
+  // this.can== true;
+    if(this.can==true){
+      this.reservationService.insertReservation(reservation).subscribe(data => {
+        if(data.success) {
+          this.ngFlashMessageService.showFlashMessage({
+            messages: ["Reserved successfully"], 
+            dismissible: true, 
+            timeout: 5000,
+            type: 'success'
+          }); 
         // this.ngOnInit();
         this.router.navigate(['/reservation']); 
-        
-      
+        }else {
+          this.ngFlashMessageService.showFlashMessage({
+            messages: [data.msg], 
+            dismissible: true, 
+            timeout: 5000,
+            type: 'danger'
+            });  
+            this.router.navigate(['/addreservation']); 
+            }
+      });
+    }else{
+      this.ngFlashMessageService.showFlashMessage({
+        messages: ["Time Slot is already allocated."], 
+        dismissible: true, 
+        timeout: 5000,
+        type: 'danger'
+      });  
+      this.router.navigate(['/addreservation']); 
+    }
 
-      } else {
-        this.ngFlashMessageService.showFlashMessage({
-          messages: [data.msg], 
-         dismissible: true, 
-         timeout: 5000,
-         type: 'danger'
-       });  
-       this.router.navigate(['/addreservation']); 
-      }
     });
   }
 }
