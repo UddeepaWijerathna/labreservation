@@ -1,0 +1,23 @@
+{
+  "name": "labreservation",
+  "version": "1.0.0",
+  "description": "UCSC online lab reservation system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Uddeepa Wijerathna",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "ng": "0.0.0-rc6",
+    "nodemon": "^1.17.5",
+    "passport": "*",
+    "passport-jwt": "*"
+  }
+}

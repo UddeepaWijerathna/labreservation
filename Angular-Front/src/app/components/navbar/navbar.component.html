@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-dark mdb-color darken-0">
+  
+    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a [routerLink] = "['/']" class="nav-link" >Home</a>
+            </li>
+            <li *ngIf="authService.loggedIn()"  class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a [routerLink] = "['/login']" class="nav-link" >Login</a>
+            </li>
+            <li *ngIf="authService.loggedIn()"   class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a [routerLink] = "['/register']" class="nav-link">Register</a>
+            </li> 
+            <!-- when you are not logged in -->
+            <li *ngIf="!authService.loggedIn() && authService.isAdmin() "  class="nav-item dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+              <a [routerLink] = "['/dashboard']" class="nav-link dropdown-toggle" data-toggle="dropdown" >Computer labs</a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                      
+                      <a class="dropdown-item"[routerLink] = "['/addlab']">Add</a>
+                      <a class="dropdown-item"[routerLink] = "['/dashboard']">Update/Delete</a>
+                      <a class="dropdown-item" [routerLink] = "['/report']">Reports</a>
+                      <!-- <a class="dropdown-item" href="">User Accounts</a> -->
+              </div>
+            </li>
+            <li *ngIf="!authService.loggedIn() && !authService.isAdmin()"  class="nav-item dropdown" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" >
+                    <a [routerLink] = "['/reservation']" class="nav-link dropdown-toggle" data-toggle="dropdown" >Reservation</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="/reservation">Reservations </a>
+                            <a class="dropdown-item" href="/addreservation">Add </a>
+                            <a class="dropdown-item" href="/updatereservation">Update/Delete</a>
+                            
+                    </div>
+                </li>
+
+           <!-- when you are not logged in -->
+          <li *ngIf="!authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a [routerLink] = "['/profile']" class="nav-link">Profile</a>
+          </li> 
+          <li>
+            <!-- when you are not logged in -->
+          <a *ngIf="!authService.loggedIn()" (click)="onLogoutClick()"  href="#" class="nav-link">Logout</a>
+      </li>
+        </ul>
+        <!-- <span class="navbar-text white-text">
+            <b>UCSC Lab Reservation </b>
+        </span> -->
+    </div>
+  </nav>  
+  

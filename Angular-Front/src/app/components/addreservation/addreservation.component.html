@@ -1,0 +1,60 @@
+<!-- <form class="form-horizontal" (submit)="loginUser()"> -->
+    <div class="card col-md-12">
+        <form class="form-horizontal" (submit)="onReserveLab() ">
+          <fieldset>
+              <h4 class="card-header mdb-color lighten-1 white-text">Reserve Lab</h4>
+              <div><br/></div>
+            <!-- <div class="form-group">
+                <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control"  placeholder="Username" name="username" [(ngModel)]="username">
+                </div>
+            </div>
+      
+            <div class="form-group">
+                <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                <div class="col-lg-10">
+                  <input type="email" class="form-control"  placeholder="Email" name="email" [(ngModel)]="email">
+                </div>
+            </div> -->
+
+            <div class="form-group">
+                <label for="inputName" class="col-lg-2 control-label">Lab Name</label>
+                <div class="col-lg-10">
+                  <input type="text" class="form-control"  placeholder="name" Lab name="labname" [(ngModel)]="labname">
+                </div>
+            </div>
+      
+
+      
+            <div class="form-group">
+                <label for="inputDate" class="col-lg-2 control-label" >Date</label>
+                <div class="col-lg-10">
+                  <input type="date" class="form-control"  placeholder="Date" name="reserveddate" [(ngModel)]="reserveddate">
+                </div>
+              </div>
+      
+              <div class="form-group">
+                  <label for="inputFrom" class="col-lg-2 control-label" >From</label>
+                  <div class="col-lg-10">
+                    <input type="time" class="form-control"  placeholder="Time" name="from" [(ngModel)]="from">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputTo" class="col-lg-2 control-label" >To</label>
+                    <div class="col-lg-10">
+                      <input type="time" class="form-control"  placeholder="Time" name="to" [(ngModel)]="to">
+                    </div>
+                  </div>
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="submit" class="btn btn-info">Reserve</button>
+                  <button type="reset" class="btn btn-danger">Cancel</button>
+                  
+                </div>
+              </div>
+          </fieldset>
+        </form>
+      </div>
+      
+      
