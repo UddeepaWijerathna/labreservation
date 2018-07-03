@@ -29,9 +29,10 @@ export class ReservationService {
     return this.http.get('http://localhost:3000/reservations/allreservations',{headers:headers})
       .pipe(map(res => res.json()));
     }
-//URL for getting my all reservations
+// URL for getting one user's all reservations
   getMyReservation(username) {
-    console.log("we");
+    console.log(username);
+
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     return this.http.get('http://localhost:3000/reservations/myreservations/'+username,{headers:headers})
@@ -61,7 +62,7 @@ getReservations(reserveddate) {
     updateReservation(id,reservation) {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      return this.http.post('http://localhost:3000/reservations/editreservation'+id,reservation,{headers:headers})
+      return this.http.post('http://localhost:3000/reservations/editreservation/'+id,reservation,{headers:headers})
         .pipe(map(res => res.json()));
 
     }

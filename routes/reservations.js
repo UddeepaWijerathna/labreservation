@@ -39,15 +39,16 @@ router.get('/allreservations',(req,res,next) => {
 
 //get only logged users' reservations
 router.get('/myreservations/:username',(req,res,next) => {
-    const username = req.params.username;
+     const username = req.params.username;
     console.log(username);
-    Reservation.getAllReservations((err,reservelist) => {
+    Reservation.getMyReservations(req.params.username,(err,reservelist) => {
         if(err){
             res.json({success:false,msg:'Failed to make get request'});
         } else {
             res.json({success:true,reservelist:reservelist});
         }
     });
+    
 });
  
 
@@ -69,8 +70,8 @@ router.delete('/:id',(req,res,next) => {
 router.post('/editreservation/:id',(req,res,next) => {
     const id = request.params.id;   
     let newReservation = new Reservation ({
-        username:req.body.username,
-        useremail:req.body.useremail,
+        // username:req.body.username,
+        // useremail:req.body.useremail,
         labname:req.body.labname,   
         reserveddate:req.body.reserveddate,
         from:req.body.from,

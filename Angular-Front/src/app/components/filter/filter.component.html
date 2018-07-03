@@ -1,3 +1,48 @@
-<p>
-  filter works!
-</p>
+
+    <div class="card col-md-12">
+      <form class="form-horizontal" (submit)="onChangeLab() ">
+        <fieldset>
+            <h4 class="card-header mdb-color lighten-1 white-text">Update Lab Time</h4>
+            <div><br/></div>
+
+          <div class="form-group">
+              <label for="inputName" class="col-lg-2 control-label">Lab Name</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control"  placeholder="name" Lab name="labname" [(ngModel)]="labname">
+              </div>
+          </div>
+    
+
+    
+          <div class="form-group">
+              <label for="inputDate" class="col-lg-2 control-label" >Date</label>
+              <div class="col-lg-10">
+                <input type="date" class="form-control"  placeholder="Date" name="reserveddate" [(ngModel)]="reserveddate">
+              </div>
+            </div>
+            <label for="inputFrom" class="col-lg-12 control-label" ><b>Time Slots: </b>  <code><b><i>8.00AM-10.00AM</i>  ,  10.00AM-12.00PM  ,  <i>1.00PM-3.00PM</i>  ,  3.00PM-5.00PM</b></code></label>
+            <div class="form-group">
+                <label for="inputFrom" class="col-lg-2 control-label" >From</label>
+                <div class="col-lg-10">
+                  <input type="time" class="form-control"  placeholder="Time" name="from" [(ngModel)]="from">
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="inputTo" class="col-lg-2 control-label" >To</label>
+                  <div class="col-lg-10">
+                    <input type="time" class="form-control"  placeholder="Time" name="to" [(ngModel)]="to">
+                  </div>
+                </div>
+          <div class="form-group">
+              <div class="col-lg-10 col-lg-offset-2">
+                  <button type="submit" class="btn btn-info">Update</button>
+                <button type="reset" class="btn btn-danger">Cancel</button>
+                
+              </div>
+            </div>
+        </fieldset>
+      </form>
+    </div>
+    
+    
+

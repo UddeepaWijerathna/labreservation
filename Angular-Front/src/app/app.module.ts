@@ -39,6 +39,7 @@ const appRoutes:Routes = [
   {path:'addreservation',component:AddreservationComponent },
   {path:'reservation',component:ReservationComponent,canActivate:[AuthGuard]},
   {path:'report',component:ReportComponent,canActivate:[AuthGuard]},
+  {path:'filter',component:FilterComponent,canActivate:[AuthGuard]},
 ]
 @NgModule({
   declarations: [

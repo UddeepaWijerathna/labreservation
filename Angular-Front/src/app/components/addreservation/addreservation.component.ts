@@ -20,7 +20,7 @@ export class AddreservationComponent implements OnInit {
   from:String;
   to:String;
   lablist = [];
-  reservelist =[];
+  reservelist :any;
   can:boolean;
   // result=String;
 
@@ -69,6 +69,8 @@ export class AddreservationComponent implements OnInit {
     this.reservationService.getAllReservations().subscribe(addreservation=> {
       this.reservelist = addreservation.reservelist;
       console.log(this.reservelist);
+      console.log(this.reservelist[0][3]);
+
       
       console.log(this.labname);
       if(this.reservelist.length !=0){
@@ -76,8 +78,17 @@ export class AddreservationComponent implements OnInit {
          for(var element in this.reservelist){
           
             if((this.labname==this.reservelist[element].labname)&&(this.reserveddate==this.reservelist[element].reserveddate) ){
-              if((this.from==this.reservelist[element].from) && (this.to==this.reservelist[element].to))    
-                    this.can= false;
+              if((this.from==this.reservelist[element].from) && (this.to==this.reservelist[element].to)) {   
+                    this.can= false;}
+              // else if((this.from>this.reservelist[element].from)&&(this.from<this.reservelist[element].to)&& (this.to<=this.reservelist[element].to)){
+              //       this.can=false;
+              // }
+              // else if((this.from>this.reservelist[element].from)&&(this.from<this.reservelist[element].to)&& (this.to>this.reservelist[element].to)){
+              //   this.can=false;
+              // }
+             
+          
+              
             }
             else{
               this.can= true;

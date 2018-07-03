@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class UpdatereservationComponent implements OnInit {
 
- 
+  y:any;
   reservelist=[];
 
   constructor(
@@ -25,10 +25,10 @@ export class UpdatereservationComponent implements OnInit {
 
   ngOnInit(){
     console.log("wow");
-    const y=this.authservice.loadUser();
-    this.reservationService.getMyReservation(y.username).subscribe(updatereservation => {
+    this.y=this.authservice.loadUser();
+    this.reservationService.getMyReservation(this.y.username).subscribe(updatereservation => {
       this.reservelist = updatereservation.reservelist;
-      
+     
     },
     err => {
       console.log(err);
